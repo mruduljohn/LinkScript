@@ -16,7 +16,8 @@ LinkScript is a user-friendly web application. Input key details such as subject
 
 1. Clone the repository: `git clone https://github.com/mruduljohn/LinkScript.git`
 2. Navigate to the project directory: `cd LinkScript`
-3. Open `index.html` in your browser.
+3. Install Dependencies : pip install -r requirements.txt
+4. streamlit run app.py
 
 ## GitHub Repository
 
