@@ -33,8 +33,8 @@ def generate_content(mood, type, subject, date, description, tags):
 st.title("LinkedIn Post Generator - LinkScript")
 
 # User inputs
-subject = st.text_input("Subject:")
-description = st.text_area("Description:")
+subject = st.text_input("Subject: What is the post about?")
+description = st.text_area("Description: Describe the post as much as possible. Include links if necessary.")
 date = st.date_input("Date:")
 mood = st.selectbox("Mood of Writing:", ["Happy", "Neutral", "Professional","Cool", "Sad"])
 type = st.selectbox("Type:", ["Article", "Event", "Job", "Achievement", "Other"])
