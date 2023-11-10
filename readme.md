@@ -12,6 +12,8 @@ In the fast-paced digital world, creating compelling LinkedIn posts that strike 
 
 LinkScript is a user-friendly web application. Input key details such as subject, description, date, mood, tags, and more. Our AI algorithm then generates a polished and well-structured LinkedIn post. Simply copy the generated content and publish it directly on your LinkedIn profile.
 
+### Live Version : https://linkscript.streamlit.app/
+
 ## Quick Start
 
 1. Clone the repository: `git clone https://github.com/mruduljohn/LinkScript.git`
