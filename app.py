@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 # Set your OpenAI API key
 client = OpenAI(
-  api_key=st.secrets[OPENAI_API_KEY],  # this is also the default, it can be omitted
+  api_key=st.secrets['OPENAI_API_KEY'],  # this is also the default, it can be omitted
   #api_key=os.environ.get("OPENAI_API_KEY")
 )
 
