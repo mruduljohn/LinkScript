@@ -1,12 +1,14 @@
 import streamlit as st
-import openai
+from openai import OpenAI
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
-
 # Set your OpenAI API key
-openai.api_key = os.getenv("OPENAI_API_KEY", "default_key")
+client = OpenAI(
+  api_key=os.environ['OPENAI_API_KEY'],  # this is also the default, it can be omitted
+)
+
 
 # Function to generate content using GPT-4
 def generate_content(mood, type, subject, date, description, tags):
@@ -16,8 +18,9 @@ def generate_content(mood, type, subject, date, description, tags):
         f"{date} {description}. You can include more similar tags like {tags}"
     )
 
-    response = openai.Completion.create(
-        engine="text-davinci-003",  # You can experiment with different engines
+    response = client.completions.create(
+        model="text-davinci-003",
+        #engine="text-davinci-003",  # You can experiment with different engines
         prompt=prompt,
         max_tokens=200  # Adjust based on your needs
     )
@@ -30,8 +33,11 @@ st.title("LinkedIn Post Generator - LinkScript")
 subject = st.text_input("Subject:")
 description = st.text_area("Description:")
 date = st.date_input("Date:")
-mood = st.selectbox("Mood of Writing:", ["Happy", "Neutral", "Professional"])
+mood = st.selectbox("Mood of Writing:", ["Happy", "Neutral", "Professional,Cool", "Sad"])
 type = st.selectbox("Type:", ["Article", "Event", "Job", "Achievement", "Other"])
+#specify the typpe if other is selected
+if type == "Other":
+    type = st.text_input("Type:")
 tags = st.text_input("Tags (comma-separated):")
 
 # Button to generate post
@@ -44,7 +50,7 @@ if st.button("Generate Post"):
 
     # Display the generated post
     st.success("Your LinkedIn Post is ready! Copy and paste the content below:")
-    st.code(post_content)
+    st.code(generated_content)
 
 # GitHub link
 st.markdown("[GitHub Repository](https://github.com/mruduljohn/LinkScript)")
